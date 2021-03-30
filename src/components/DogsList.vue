@@ -1,16 +1,19 @@
 <template>
+	<div class="header">
+		<h1>Dogs</h1>
+	</div>
 	<div class="animal-contianer">
-		<div class="animal-card" v-for="animal in animals" :key="animal.id">
+		<div class="animal-card" v-for="dog in dogs" :key="dog.id">
 			<div class="img-container">
-				<img :src="animal.primary_photo_cropped.small" alt="" />
+				<img :src="dog.primary_photo_cropped.small" alt="" />
 			</div>
 			<div class="attribute-wrapper">
-				<h3>{{ animal.name }}</h3>
+				<h3>{{ dog.name }}</h3>
 				<div class="location-row">
 					<i class="fas fa-map-pin"></i>
 					<sub
-						>{{ animal.contact.address.city }},
-						{{ animal.contact.address.state }}
+						>{{ dog.contact.address.city }},
+						{{ dog.contact.address.state }}
 					</sub>
 				</div>
 			</div>
@@ -20,8 +23,8 @@
 
 <script>
 export default {
-	name: "AnimalList",
-	props: ["animals"],
+	name: "DogsList",
+	props: ["dogs"],
 	methods: {},
 	created() {},
 	updated() {},
@@ -29,9 +32,17 @@ export default {
 </script>
 
 <style scoped>
+.header {
+	background-color: #eec5a4b5;
+	height: 4.6rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 .animal-contianer {
 	width: 100vw;
-	height: 78vh;
+	height: 76vh;
 	overflow: scroll;
 	display: flex;
 	flex-wrap: wrap;
@@ -86,6 +97,6 @@ img {
 }
 
 .fas {
-	padding-right: 0.5rem;
+	padding-right: 0.75rem;
 }
 </style>

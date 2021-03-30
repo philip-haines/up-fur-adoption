@@ -1,20 +1,20 @@
 <template>
 	<div id="app">
-		<main class="App__main">
-			<transition name="fade" mode="out-in">
-				<router-view />
-			</transition>
-		</main>
+		<router-view />
 	</div>
 </template>
 
 <script></script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Lato,wght@1,300&display=swap");
 body {
 	padding: 0;
 	margin: 0;
 	display: flex;
+	font-family: "Lato", sans-serif;
+	height: 100vh;
+	width: 100vw;
 }
 
 .fade-enter-active,
@@ -27,14 +27,5 @@ body {
 .fade-enter,
 .fade-leave-active {
 	opacity: 0;
-}
-
-#nav {
-	height: 4rem;
-	display: flex;
-	justify-content: space-evenly;
-	position: fixed;
-	bottom: 0;
-	width: 100%;
 }
 </style>
