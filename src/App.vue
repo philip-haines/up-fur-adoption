@@ -1,13 +1,13 @@
 <template>
-	<div id="app">
-		<router-view />
-	</div>
+	<router-view />
 </template>
 
-<script></script>
+<script>
+export default {};
+</script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Lato,wght@1,300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 body {
 	padding: 0;
 	margin: 0;
@@ -15,9 +15,10 @@ body {
 	font-family: "Lato", sans-serif;
 	height: 100vh;
 	width: 100vw;
+	color: #4f4f4f;
 }
 
-.fade-enter-active,
+/* .fade-enter-active,
 .fade-leave-active {
 	transition-duration: 0.3s;
 	transition-property: opacity;
@@ -27,5 +28,5 @@ body {
 .fade-enter,
 .fade-leave-active {
 	opacity: 0;
-}
+} */
 </style>

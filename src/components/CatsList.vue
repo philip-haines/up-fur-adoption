@@ -34,7 +34,7 @@ export default {
 <style scoped>
 .header {
 	background-color: #eec5a4b5;
-	height: 4.6rem;
+	height: 7vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -42,7 +42,7 @@ export default {
 
 .animal-contianer {
 	width: 100vw;
-	height: 76vh;
+	height: 82vh;
 	overflow: scroll;
 	display: flex;
 	flex-wrap: wrap;
@@ -93,7 +93,6 @@ img {
 
 .location-row {
 	display: flex;
-	color: #202427;
 }
 
 .fas {

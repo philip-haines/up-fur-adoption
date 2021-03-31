@@ -5,20 +5,20 @@
 	<div v-if="currentTab == 2" class="cats">
 		<Cats />
 	</div>
-	<div v-if="currentTab == 3" class="cats">
+	<div v-if="currentTab == 3" class="shelters">
 		<Shelters />
 	</div>
 	<div class="button-row">
 		<button @click="selectTab(1)" class="btn">
-			<i class="fas fa-dog fa-3x"></i>
+			<i class="fas fa-dog fa-2x"></i>
 			Dogs
 		</button>
 		<button @click="selectTab(2)" class="btn">
-			<i class="fas fa-cat fa-3x"></i>
+			<i class="fas fa-cat fa-2x"></i>
 			Cats
 		</button>
 		<button @click="selectTab(3)" class="btn">
-			<i class="fas fa-store-alt fa-3x"></i> Shelters
+			<i class="fas fa-store-alt fa-2x"></i> Shelters
 		</button>
 	</div>
 </template>
@@ -36,11 +36,20 @@ export default {
 	data() {
 		return {
 			currentTab: 1,
+			speciecs: "dog",
 		};
 	},
 	methods: {
 		selectTab(selectedTab) {
 			this.currentTab = selectedTab;
+		},
+
+		setSpeciecsState() {
+			if (this.currentTab === 1) {
+				this.species = "dog";
+			} else {
+				this.species = "cat";
+			}
 		},
 	},
 };
@@ -54,7 +63,7 @@ export default {
 	background-color: #eec5a4b5;
 	margin-top: 0.1rem;
 	padding-top: 0.25rem;
-	height: 6rem;
+	height: 11vh;
 }
 
 .btn {
@@ -63,8 +72,13 @@ export default {
 	justify-content: center;
 	align-items: center;
 	height: 4rem;
-	width: 6rem;
+	width: 4rem;
 	background: none;
+	border: none;
+	color: #4f4f4f;
+}
+
+.btn:focus {
 	border: none;
 }
 </style>

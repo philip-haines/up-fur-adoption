@@ -4,8 +4,11 @@
 	</div>
 	<div class="animal-contianer">
 		<div class="animal-card" v-for="dog in dogs" :key="dog.id">
-			<div class="img-container">
+			<div v-if="dog.primary_photo_cropped" class="img-container">
 				<img :src="dog.primary_photo_cropped.small" alt="" />
+			</div>
+			<div v-else class="img-container">
+				<img src="../assets/dog-place-holder-3.jpeg" alt="" />
 			</div>
 			<div class="attribute-wrapper">
 				<h3>{{ dog.name }}</h3>
@@ -34,7 +37,7 @@ export default {
 <style scoped>
 .header {
 	background-color: #eec5a4b5;
-	height: 4.6rem;
+	height: 7vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -42,7 +45,7 @@ export default {
 
 .animal-contianer {
 	width: 100vw;
-	height: 76vh;
+	height: 82vh;
 	overflow: scroll;
 	display: flex;
 	flex-wrap: wrap;
@@ -93,7 +96,6 @@ img {
 
 .location-row {
 	display: flex;
-	color: #202427;
 }
 
 .fas {

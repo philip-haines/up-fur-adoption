@@ -4,12 +4,11 @@
 			<h1>Up-Fur-Adoption</h1>
 			<h2>ADOPT, DON'T SHOP!</h2>
 		</div>
-		<!-- <img src="../assets/up-fur-adoption-home.png" alt="" /> -->
 		<div class="form">
 			<h3>Enter Your Zip To Get Started</h3>
 			<form id="zip-code">
-				<input type="number" />
-				<button>
+				<input v-model="location" type="number" />
+				<button @click="saveLocation()">
 					<router-link to="/animals" tag="button"
 						>New Furrriends</router-link
 					>
@@ -21,9 +20,18 @@
 
 <script>
 // @ is an alias to /src
-
 export default {
 	name: "Home",
+	data() {
+		return {
+			location: "",
+		};
+	},
+	methods: {
+		saveLocation() {
+			localStorage.setItem("location", this.location);
+		},
+	},
 };
 </script>
 
