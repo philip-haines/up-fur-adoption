@@ -63,7 +63,7 @@ export default {
 	background-color: #eec5a4b5;
 	margin-top: 0.1rem;
 	padding-top: 0.25rem;
-	height: 11vh;
+	height: 8vh;
 }
 
 .btn {

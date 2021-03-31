@@ -45,7 +45,7 @@ export default {
 
 .animal-contianer {
 	width: 100vw;
-	height: 82vh;
+	height: 85vh;
 	overflow: scroll;
 	display: flex;
 	flex-wrap: wrap;
