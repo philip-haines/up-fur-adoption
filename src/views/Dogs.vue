@@ -1,17 +1,19 @@
 <template>
 	<div>
-		<DogsList :dogs="this.dogs" />
+		<DogsList :dogs="this.dogs" @update-id="updateId" />
 	</div>
 </template>
 
 <script>
 const bearer =
-	"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJLNFVCYmFJYVUzYWV3anJycFRDMHVHTFd0Vm1LWHA5WDF1S1lQTmJVMzU3ZW5iM3ZuQyIsImp0aSI6IjZjOTk2OTE2ZTg3NTZmZjEwYzI4NzMwZjVjMmYxOGY1N2IzMDE0MTk3OGI0NmMxMTQzYzZkMTk3MjkxYmFiODc3MTk1ZTUxYmIzMmJmMTAxIiwiaWF0IjoxNjE3MTk5ODM0LCJuYmYiOjE2MTcxOTk4MzQsImV4cCI6MTYxNzIwMzQzNCwic3ViIjoiIiwic2NvcGVzIjpbXX0.T8ICoAN0vM58JYu9_7UYzIXSO97dhLLdBYVThDJZ-KrLbXUL-TY3qdQNEz3C44tLAYOV487KFXA11m48S0sEQar6kr3zLlYrMiopnMAZBFevxzYVxIhjpWTu6fE06Woiztmwnn6D-WN00i0S60T6GjL_F6sm0tYXKK8d4sPGtcb6fqQrPpGpNrIyZvj6nkG7bNSje5dy0d2HgJPnRlGh27Elg3nWMRYy0F7KrdV6TCKe-wHVIxeQU1gnWwiPZCmFVGHwTCxyQ5OiliMX1VRdkukdshm80d2aDQ-lG9ZPc5KMIb1A5OVsuRBz-rwqrMsKPcix2kJrCVDyW4CAIwQPXg";
+	"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJLNFVCYmFJYVUzYWV3anJycFRDMHVHTFd0Vm1LWHA5WDF1S1lQTmJVMzU3ZW5iM3ZuQyIsImp0aSI6ImJkNTY1YzY3YzI4ZDZiYWM5MTU2OThjYjA0YjMxZDk0NDYxNzUwZmM3NTUzYTBhZDdlNTg3Y2I1ZWM4ZWY4MmNmYzkzMjVkOTRjNWE5YWQ4IiwiaWF0IjoxNjE3MjA5MzUwLCJuYmYiOjE2MTcyMDkzNTAsImV4cCI6MTYxNzIxMjk1MCwic3ViIjoiIiwic2NvcGVzIjpbXX0.m_pfpOrWnQG0mHep09dm9FdQWSedcl4NjEmE0Ysmi6gzjXAsIjh-fY28fUnQfGyheX6tPMizVPc1HX4nyd4XCxOKXrvYsLAklzD8igpJjoXAAZ5R--JtiqgRiqH2Ah371OBTLxQ2vrKJLgyUKPR99xkS3qVCcKP5YUbE5f82aKbkrQD1hWDwptPs4e1H4hzBoSwtwCdH9e1X485GYg-KG7FG-yoVdUAwUyLzqgr8htN3-QdLY4vojuTLo771djcasexGFD_leVWAuSIi8jU_sM7vBjqvyGPwXn-3M2Z7KaqBszXRg5btp0yo5TPKaWRXY7bAgBxuxaiZ51zphAmzCg";
 import DogsList from "@/components/DogsList.vue";
+// import AnimalShow from "@/components/AnimalShow.vue";
 export default {
 	name: "Dogs",
 	components: {
 		DogsList,
+		// AnimalShow,
 	},
 	data() {
 		return {
@@ -37,6 +39,10 @@ export default {
 					console.log(this.dogs);
 				});
 		},
+
+		// updateId(id) {
+		// 	this.id = id;
+		// },
 	},
 	created() {
 		this.dogs = this.fetchAnimals();

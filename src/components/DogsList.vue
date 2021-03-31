@@ -4,22 +4,29 @@
 	</div>
 	<div class="animal-contianer">
 		<div class="animal-card" v-for="dog in dogs" :key="dog.id">
-			<div v-if="dog.primary_photo_cropped" class="img-container">
-				<img :src="dog.primary_photo_cropped.small" alt="" />
-			</div>
-			<div v-else class="img-container">
-				<img src="../assets/dog-place-holder-3.jpeg" alt="" />
-			</div>
-			<div class="attribute-wrapper">
-				<h3>{{ dog.name }}</h3>
-				<div class="location-row">
-					<i class="fas fa-map-pin"></i>
-					<sub
-						>{{ dog.contact.address.city }},
-						{{ dog.contact.address.state }}
-					</sub>
+			<router-link
+				:to="{
+					name: 'AnimalShow',
+					params: { id: dog.id },
+				}"
+			>
+				<div v-if="dog.primary_photo_cropped" class="img-container">
+					<img :src="dog.primary_photo_cropped.small" alt="" />
 				</div>
-			</div>
+				<div v-else class="img-container">
+					<img src="../assets/dog-place-holder-3.jpeg" alt="" />
+				</div>
+				<div class="attribute-wrapper">
+					<h3>{{ dog.name }}</h3>
+					<div class="location-row">
+						<i class="fas fa-map-pin"></i>
+						<sub
+							>{{ dog.contact.address.city }},
+							{{ dog.contact.address.state }}
+						</sub>
+					</div>
+				</div>
+			</router-link>
 		</div>
 	</div>
 </template>
