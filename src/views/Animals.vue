@@ -1,49 +1,84 @@
 <template>
-	<h1>Your New Furry Friends</h1>
-	<div class="animals">
-		<AnimalList :animals="animals" />
+	<div v-if="currentTab == 1" class="dogs">
+		<Dogs />
+	</div>
+	<div v-if="currentTab == 2" class="cats">
+		<Cats />
+	</div>
+	<div v-if="currentTab == 3" class="shelters">
+		<Shelters />
+	</div>
+	<div class="button-row">
+		<button @click="selectTab(1)" class="btn">
+			<i class="fas fa-dog fa-2x"></i>
+			Dogs
+		</button>
+		<button @click="selectTab(2)" class="btn">
+			<i class="fas fa-cat fa-2x"></i>
+			Cats
+		</button>
+		<button @click="selectTab(3)" class="btn">
+			<i class="fas fa-store-alt fa-2x"></i> Shelters
+		</button>
 	</div>
 </template>
 
 <script>
-const bearer =
-	"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJLNFVCYmFJYVUzYWV3anJycFRDMHVHTFd0Vm1LWHA5WDF1S1lQTmJVMzU3ZW5iM3ZuQyIsImp0aSI6IjVlYzY4MDg4MjFmNzg5MzNhMjY2OGQyMjczMmI4MGFiNWExZjMyYTFkODFkMDZmZGViZjdkYjhlMDUyZTE3ZDZjNmVmODYwNzA1OWI3MjM1IiwiaWF0IjoxNjE3MTEzNDI4LCJuYmYiOjE2MTcxMTM0MjgsImV4cCI6MTYxNzExNzAyOCwic3ViIjoiIiwic2NvcGVzIjpbXX0.XvNU_oFBlVkhneKTM32617A_bfldvtJIlOnxm6j-vAPBQAl-p0JrjkhHnqPoKzcRf8A-eNP6WVwaPEKpzxe3dBI642TdSkuLxDiQ6l9o7gnr5d8WWd6uOEZ1SwPEiSYvRy48-ow3evLpmAvcfdSIA-1SUqYuNUVsPNKOJloTSaBvdT1t-peevgTCjU29AhQWbg6ejRHiJFGQfDRAtBWWOmhewv6CCpE6EqlQfEeZaJBe6QBxYc5So5C-OOvEl2aY7b3PvlXkubeP0QOZi1jy3gfsPO4Fr2ORv04U6rPGR6X4O_jspngF02r_9Ox7b1TJJQnLi2CNm1gmn_nQ_Fxo5w";
-
-import AnimalList from "@/components/AnimalList.vue";
-
+import Dogs from "./Dogs.vue";
+import Cats from "./Cats.vue";
+import Shelters from "./Shelters.vue";
 export default {
-	name: "Animals",
 	components: {
-		AnimalList,
+		Dogs,
+		Cats,
+		Shelters,
 	},
 	data() {
 		return {
-			animals: [],
+			currentTab: 1,
+			speciecs: "dog",
 		};
 	},
 	methods: {
-		fetchAnimals() {
-			fetch(
-				"https://api.petfinder.com/v2/animals?type=cat&age=adult,senior&location=10128&distance=50&status=adoptable&limit=10",
-				{
-					method: "GET",
-					headers: {
-						"Content-Type": "application/json",
-						Authorization: bearer,
-					},
-				}
-			)
-				.then((response) => response.json())
-				.then((data) => {
-					this.animals = data.animals;
-					console.log(this.animals);
-				});
+		selectTab(selectedTab) {
+			this.currentTab = selectedTab;
 		},
-	},
-	created() {
-		this.animals = this.fetchAnimals();
+
+		setSpeciecsState() {
+			if (this.currentTab === 1) {
+				this.species = "dog";
+			} else {
+				this.species = "cat";
+			}
+		},
 	},
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.button-row {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background-color: #eec5a4b5;
+	margin-top: 0.1rem;
+	padding-top: 0.25rem;
+	height: 11vh;
+}
+
+.btn {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 4rem;
+	width: 4rem;
+	background: none;
+	border: none;
+	color: #4f4f4f;
+}
+
+.btn:focus {
+	border: none;
+}
+</style>

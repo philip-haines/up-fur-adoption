@@ -1,16 +1,19 @@
 <template>
+	<div class="header">
+		<h1>Shelters</h1>
+	</div>
 	<div class="animal-contianer">
-		<div class="animal-card" v-for="animal in animals" :key="animal.id">
+		<div class="animal-card" v-for="shelter in shelters" :key="shelter.id">
 			<div class="img-container">
-				<img :src="animal.primary_photo_cropped.small" alt="" />
+				<!-- <img :src="dog.primary_photo_cropped.small" alt="" /> -->
 			</div>
 			<div class="attribute-wrapper">
-				<h3>{{ animal.name }}</h3>
+				<h3>{{ shelter.name }}</h3>
 				<div class="location-row">
 					<i class="fas fa-map-pin"></i>
 					<sub
-						>{{ animal.contact.address.city }},
-						{{ animal.contact.address.state }}
+						>{{ shelter.address.city }},
+						{{ shelter.address.state }}
 					</sub>
 				</div>
 			</div>
@@ -20,8 +23,8 @@
 
 <script>
 export default {
-	name: "AnimalList",
-	props: ["animals"],
+	name: "SheltersList",
+	props: ["shelters"],
 	methods: {},
 	created() {},
 	updated() {},
@@ -29,9 +32,17 @@ export default {
 </script>
 
 <style scoped>
+.header {
+	background-color: #eec5a4b5;
+	height: 4.6rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 .animal-contianer {
 	width: 100vw;
-	height: 78vh;
+	height: 76vh;
 	overflow: scroll;
 	display: flex;
 	flex-wrap: wrap;
@@ -64,16 +75,6 @@ img {
 	border-top-left-radius: 0.325rem;
 }
 
-.status {
-	width: fit-content;
-	padding: 2px;
-	margin-bottom: -0.5rem;
-	border-radius: 0.5rem;
-	font-size: 14px;
-	background-color: #98ebb3cb;
-	color: #4f4f4f;
-}
-
 .attribute-wrapper {
 	margin: 0 0.5rem;
 	display: flex;
@@ -86,6 +87,6 @@ img {
 }
 
 .fas {
-	padding-right: 0.5rem;
+	padding-right: 0.75rem;
 }
 </style>
