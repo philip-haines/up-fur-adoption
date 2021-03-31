@@ -1,30 +1,53 @@
 <template>
-	<div class="header">
-		<h1>Cats</h1>
-	</div>
-	<div class="animal-contianer">
-		<div class="animal-card" v-for="cat in cats" :key="cat.id">
-			<div class="img-container">
-				<!-- <img :src="dog.primary_photo_cropped.small" alt="" /> -->
+	<main>
+		<div class="header">
+			<div v-if="currentTab == 1">
+				<h1>Dogs</h1>
 			</div>
-			<div class="attribute-wrapper">
-				<h3>{{ cat.name }}</h3>
-				<div class="location-row">
-					<i class="fas fa-map-pin"></i>
-					<sub
-						>{{ cat.contact.address.city }},
-						{{ cat.contact.address.state }}
-					</sub>
-				</div>
+			<div v-else>
+				<h1>Cats</h1>
 			</div>
 		</div>
-	</div>
+		<div class="animal-contianer">
+			<div class="animal-card" v-for="animal in animals" :key="animal.id">
+				<router-link
+					:to="{
+						name: 'AnimalShow',
+						params: { id: animal.id },
+					}"
+				>
+					<div
+						v-if="animal.primary_photo_cropped"
+						class="img-container"
+					>
+						<img :src="animal.primary_photo_cropped.small" alt="" />
+					</div>
+					<div v-else class="img-container">
+						<img src="../assets/dog-place-holder-3.jpeg" alt="" />
+					</div>
+					<div class="attribute-wrapper">
+						<h3>{{ animal.name }}</h3>
+						<div class="location-row">
+							<i class="fas fa-map-pin"></i>
+							<sub
+								>{{ animal.contact.address.city }},
+								{{ animal.contact.address.state }}
+							</sub>
+						</div>
+					</div>
+				</router-link>
+			</div>
+		</div>
+	</main>
 </template>
 
 <script>
 export default {
-	name: "CatsList",
-	props: ["cats"],
+	name: "AnimalsList",
+	props: ["animals", "currentTab"],
+	data() {
+		return {};
+	},
 	methods: {},
 	created() {},
 	updated() {},
@@ -97,5 +120,14 @@ img {
 
 .fas {
 	padding-right: 0.75rem;
+}
+
+a {
+	text-decoration: none;
+	color: #4a4a4a;
+}
+
+a:visited {
+	color: #4a4a4a;
 }
 </style>

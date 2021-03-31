@@ -4,8 +4,15 @@
 	</div>
 	<div class="animal-contianer">
 		<div class="animal-card" v-for="shelter in shelters" :key="shelter.id">
-			<div class="img-container">
-				<!-- <img :src="dog.primary_photo_cropped.small" alt="" /> -->
+			<div v-if="shelter.photos[0]" class="img-container">
+				<img :src="shelter.photos[0].small" alt="" />
+			</div>
+			<div v-else>
+				<img
+					src="../assets/Shelter-placeholder.jpeg"
+					alt=""
+					class="alternate-photo"
+				/>
 			</div>
 			<div class="attribute-wrapper">
 				<h3>{{ shelter.name }}</h3>
@@ -34,7 +41,7 @@ export default {
 <style scoped>
 .header {
 	background-color: #eec5a4b5;
-	height: 4.6rem;
+	height: 7vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -53,7 +60,7 @@ export default {
 .animal-card {
 	border: 1px solid #202427;
 	width: 150px;
-	min-height: 125px;
+	height: 250px;
 	padding-bottom: 0.5rem;
 	border-top-right-radius: 0.325rem;
 	border-top-left-radius: 0.325rem;
@@ -67,6 +74,10 @@ export default {
 .img-container {
 	height: 125px;
 	overflow: hidden;
+}
+
+.alternate-photo {
+	min-height: 100px;
 }
 img {
 	height: 100%;
@@ -83,10 +94,18 @@ img {
 
 .location-row {
 	display: flex;
-	color: #202427;
 }
 
 .fas {
 	padding-right: 0.75rem;
+}
+
+a {
+	text-decoration: none;
+	color: #4a4a4a;
+}
+
+a:visited {
+	color: #4a4a4a;
 }
 </style>

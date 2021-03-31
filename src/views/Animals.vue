@@ -1,38 +1,35 @@
 <template>
-	<div v-if="currentTab == 1" class="dogs">
-		<DogsList :dogs="animals" />
-	</div>
-	<div v-if="currentTab == 2" class="cats">
-		<CatsList :cats="animals" />
-	</div>
-	<div v-if="currentTab == 3" class="shelters">
-		<Shelters />
-	</div>
-	<div class="button-row">
-		<button @click="selectTab(1)" class="btn">
-			<i class="fas fa-dog fa-2x"></i>
-			Dogs
-		</button>
-		<button @click="selectTab(2)" class="btn">
-			<i class="fas fa-cat fa-2x"></i>
-			Cats
-		</button>
-		<button @click="selectTab(3)" class="btn">
-			<i class="fas fa-store-alt fa-2x"></i> Shelters
-		</button>
+	<div>
+		<div v-if="currentTab == 1 || currentTab == 2" class="dogs">
+			<AnimalsList :animals="animals" :currentTab="currentTab" />
+		</div>
+		<div v-if="currentTab == 3" class="shelters">
+			<Shelters />
+		</div>
+		<div class="button-row">
+			<button @click="selectTab(1)" class="btn">
+				<i class="fas fa-dog fa-2x"></i>
+				Dogs
+			</button>
+			<button @click="selectTab(2)" class="btn">
+				<i class="fas fa-cat fa-2x"></i>
+				Cats
+			</button>
+			<button @click="selectTab(3)" class="btn">
+				<i class="fas fa-store-alt fa-2x"></i> Shelters
+			</button>
+		</div>
 	</div>
 </template>
 
 <script>
-import DogsList from "@/components/DogsList.vue";
-import CatsList from "@/components/CatsList.vue";
+import AnimalsList from "@/components/AnimalsList.vue";
 import Shelters from "./Shelters.vue";
 const bearer =
-	"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJLNFVCYmFJYVUzYWV3anJycFRDMHVHTFd0Vm1LWHA5WDF1S1lQTmJVMzU3ZW5iM3ZuQyIsImp0aSI6IjRjZjNlMTlkZTFmNmMwNGQ2NjI3MjhmNjIyZmJiMjg4M2MxZDg0OTRiY2UwYTQ3MTMxNTk0ZGQ3YjE3MDY0YTM0OTJlYTMwOGNlMzY5ZjFmIiwiaWF0IjoxNjE3MjExNTQyLCJuYmYiOjE2MTcyMTE1NDIsImV4cCI6MTYxNzIxNTE0Miwic3ViIjoiIiwic2NvcGVzIjpbXX0.gWYPDQzqlIMD4NAN5R4v7mcv85mwU4yI35_23LJcrMx4eycx8OzFgvIsHZTO9Es2t4y0M_IEHJ5bSPwGkz3KAKBY2B5b95juL2YMCaEB_vMydkINUYl7rFezHgZ7_E5p96k-Z_drSxjRFsWcSCNZtY7L0LTUfnqGnbq-a8l_mtvNuxCh1B6PDUZm70BQlcR7VQx2mTH-P-P0J051yNoZhhSaRZfCP9eq2RPCYffyNCpybmst0Fzab_Pu3IukszH7kHN4QHNVs3XADiXCk83E3f34FAvYrO2AVHjT5S483H8c3DzAIc5el2SFf3C7eBNnvkerUCvmSmWiTVnKk_H7lA";
+	"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJLNFVCYmFJYVUzYWV3anJycFRDMHVHTFd0Vm1LWHA5WDF1S1lQTmJVMzU3ZW5iM3ZuQyIsImp0aSI6ImJiMTlhZjFhODI5YzBjM2E4OWJjYWNiZWUzYTcxNzAxZDQwMDkxODZiNjI5MWQ2NWIwNGNiNzYzZTBkZWIxYjI1Y2IyODg4MzA2Mzk1Y2NkIiwiaWF0IjoxNjE3MjI2MDAxLCJuYmYiOjE2MTcyMjYwMDEsImV4cCI6MTYxNzIyOTYwMSwic3ViIjoiIiwic2NvcGVzIjpbXX0.CTrPOFPcddk9k0kUPCdlcRrRwZ2NrzH-FgbpoLK36_qE2gPIeQOhnhAaK7YJ7vtD-KEAPxhfoSH8d5KN9e86detA57KhJh59S2EShElnnrDmPdRrhNYZ_ZJ65pBH0z0SiUOjjMvgVzwAD1qMWq254CdZpBwVOBwatYxky93wnjI0Rp2OMyX5Y53CMGZee7X8w_HN5tQQBkIc_PACftjO6O79uvA85G0lXko2G4RER7z6bVnDIMN8WiQzZc8rBUlN0z6B_F7ul3OYey2-JNihh2EDQWd_IWLiTnRqI3AfCHjaI1T43IlXJj3rN7eyZzjtGsxFOdeoJnK8uWEi5HaVwg";
 export default {
 	components: {
-		DogsList,
-		CatsList,
+		AnimalsList,
 		Shelters,
 	},
 	data() {

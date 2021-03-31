@@ -71,10 +71,10 @@ form {
 }
 
 button {
-	height: 3rem;
+	width: 300px;
+	height: 60px;
 	border: none;
 	border-radius: 0.5rem;
-	width: 10rem;
 	background-color: #7b3a43c1;
 	color: #fbfbfc;
 }
@@ -85,7 +85,7 @@ input {
 	border: none;
 	box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
 		rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
-	margin: 0.5rem 0;
+	margin: 1.5rem 0;
 	padding: 0 1rem;
 }
 
