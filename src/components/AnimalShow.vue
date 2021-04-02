@@ -1,65 +1,73 @@
 <template>
 	<div>
-		<div v-if="animal.animal.primary_photo_cropped" class="image">
-			<img :src="animal.animal.primary_photo_cropped.medium" alt="" />
-		</div>
-		<div v-else class="image">
-			<img src="..//assets/dog-place-holder-3.jpeg" alt="" />
-		</div>
-		<div class="container">
-			<div class="attributes">
-				<div class="title-row">
-					<div class="decorations-left">
-						<div class="decoration3"></div>
-						<div class="decoration2"></div>
-						<div class="decoration1"></div>
-					</div>
-					<h2>{{ animal.animal.name }}</h2>
-					<div class="decorations-right">
-						<div class="decoration3"></div>
-						<div class="decoration2"></div>
-						<div class="decoration1"></div>
-					</div>
-				</div>
-				<div class="location-row">
-					<h3>
-						{{ animal.animal.contact.address.city }},
-						{{ animal.animal.contact.address.state }}
-					</h3>
-				</div>
-				<div class="primary">
-					<h3>{{ animal.animal.age }}</h3>
-					<h3>{{ animal.animal.gender }}</h3>
-					<div v-if="animal.animal.breeds.primary">
-						<h3>{{ animal.animal.breeds.primary }}</h3>
-					</div>
-				</div>
-				<div class="fun">
-					<div class="decorations-left">
-						<div class="decoration1"></div>
-						<div class="decoration2"></div>
-						<div class="decoration3"></div>
-					</div>
-					<div class="decorations-right">
-						<div class="decoration1"></div>
-						<div class="decoration2"></div>
-						<div class="decoration3"></div>
-					</div>
-				</div>
-				<div v-if="animal.animal.description" class="description">
-					<p>{{ animal.animal.description }}</p>
-				</div>
+		<div class="header">
+			<div class="header-container">
+				<GoBack />
 			</div>
-			<a :href="animal.animal.url"
-				><button class="btn">Learn More</button></a
-			>
+		</div>
+		<div>
+			<div v-if="animal.animal.primary_photo_cropped" class="image">
+				<img :src="animal.animal.primary_photo_cropped.medium" alt="" />
+			</div>
+			<div v-else class="image">
+				<img src="..//assets/dog-place-holder-3.jpeg" alt="" />
+			</div>
+			<div class="container">
+				<div class="attributes">
+					<div class="title-row">
+						<div class="decorations-left">
+							<div class="decoration3"></div>
+							<div class="decoration2"></div>
+							<div class="decoration1"></div>
+						</div>
+						<h2>{{ animal.animal.name }}</h2>
+						<div class="decorations-right">
+							<div class="decoration3"></div>
+							<div class="decoration2"></div>
+							<div class="decoration1"></div>
+						</div>
+					</div>
+					<div class="location-row">
+						<h3>
+							{{ animal.animal.contact.address.city }},
+							{{ animal.animal.contact.address.state }}
+						</h3>
+					</div>
+					<div class="primary">
+						<h3>{{ animal.animal.age }}</h3>
+						<h3>{{ animal.animal.gender }}</h3>
+						<div v-if="animal.animal.breeds.primary">
+							<h3>{{ animal.animal.breeds.primary }}</h3>
+						</div>
+					</div>
+					<div class="fun">
+						<div class="decorations-left">
+							<div class="decoration1"></div>
+							<div class="decoration2"></div>
+							<div class="decoration3"></div>
+						</div>
+						<div class="decorations-right">
+							<div class="decoration1"></div>
+							<div class="decoration2"></div>
+							<div class="decoration3"></div>
+						</div>
+					</div>
+					<div v-if="animal.animal.description" class="description">
+						<p>{{ animal.animal.description }}</p>
+					</div>
+				</div>
+				<a :href="animal.animal.url"
+					><button class="btn">Learn More</button></a
+				>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script>
 const bearer =
-	"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJLNFVCYmFJYVUzYWV3anJycFRDMHVHTFd0Vm1LWHA5WDF1S1lQTmJVMzU3ZW5iM3ZuQyIsImp0aSI6ImIyYWQ0Y2E3NzE0MzhjNmVlYmNkNTM1ODE3MzM3ZWZjMjIyMjMwOTNjMTdhZTRhMGMyOGFmZmMyNDk0NWEwNDM5MjYzNDNjMDMxNTQzN2E1IiwiaWF0IjoxNjE3MjI5Njg3LCJuYmYiOjE2MTcyMjk2ODcsImV4cCI6MTYxNzIzMzI4Nywic3ViIjoiIiwic2NvcGVzIjpbXX0.xs9b-FgkifdUusx5awrC3atscC1YedaF2DC9IjSU2esxM202cjiqJRVpokpuiFhKIz6R59R8rQQOxK4cH0wlA-EBSTKcEy7wjHWZ8vnvgHDkpws3n6rn475AXio9-uLPGJ--DU4f-lv4t30wnLN_i8QBnAcKpTE5KtWINeajzq0WInDiBHzbvWqr8Z78P2X0DplmSQD-NpiGEgN4eaVs7uaHIZIxYgz_ODjPnIHOLrtNhkf7aVxhxpDE8HLZhXuAteFv_MLiI_CTHq9JX7DZckce4eqGBakFVdZQuCikBurY1_t0xSIIfK2IfAu8ZS1yB8IOOMv650EDVkEv9S_mZA";
+	"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJLNFVCYmFJYVUzYWV3anJycFRDMHVHTFd0Vm1LWHA5WDF1S1lQTmJVMzU3ZW5iM3ZuQyIsImp0aSI6IjI5YmUwNzk3MTc3ZDZmOWQwMTZjYzgyYjY3YTgyMGMwNzEzMTBiNGUxZDIzNWE0MzVkZjQ0MWZmNGMyMzdjMzJmM2I4NDQxOTg5MTFhNTljIiwiaWF0IjoxNjE3MzgzMDM2LCJuYmYiOjE2MTczODMwMzYsImV4cCI6MTYxNzM4NjYzNiwic3ViIjoiIiwic2NvcGVzIjpbXX0.PvT1WJqhlxgPvI6hBM6cl1-pc8K1pPOedN413GMNa_uT7j291qsEb4LnluiTNyyUghjRom5657EYvW_JtKzeq4SpLZyEw6tNN_UJEnSJijQIUnPm5sydCb2I1kS4k23VtsFEhRuI_CLvA4Z5dARGr_fFj-Xv9JI578xOLpPjdSJ1ZFUsGaJS5YU3j3gVGSGwBTYlBjY9moPM_zXnY0DC8OkRtJNR5WItxOEIQx1NZkLTWa9uGbo0rLnZX1-hov9XwXItQ3yRs8AA1QJBzkm0ye40pEyjbRoUXfLcosHx-b71h_NqrJOUv7M9tqCNWBOA6Yr3finf8HjvdgpIeNeGug";
+import GoBack from "@/components/GoBack.vue";
 export default {
 	data() {
 		return {
@@ -92,6 +100,9 @@ export default {
 	created() {
 		this.getAnimal();
 	},
+	components: {
+		GoBack,
+	},
 };
 </script>
 
@@ -99,6 +110,21 @@ export default {
 img {
 	min-width: 100vw;
 	max-width: 100vw;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	width: 100vw;
+	background-color: #eec5a4b5;
+	height: 4vh;
+}
+
+.header-container {
+	width: 85vw;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .container {
@@ -111,8 +137,9 @@ img {
 }
 
 .image {
-	max-height: 60vh;
+	max-height: 65vh;
 	overflow: hidden;
+	margin-bottom: 3rem;
 }
 
 .title-row {

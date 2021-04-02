@@ -1,6 +1,9 @@
 <template>
 	<div class="header">
-		<h1>Shelters</h1>
+		<div class="container">
+			<GoBack />
+			<h1>Shelters</h1>
+		</div>
 	</div>
 	<div class="animal-contianer">
 		<div class="animal-card" v-for="shelter in shelters" :key="shelter.id">
@@ -29,22 +32,31 @@
 </template>
 
 <script>
+import GoBack from "./GoBack.vue";
 export default {
 	name: "SheltersList",
 	props: ["shelters"],
-	methods: {},
-	created() {},
-	updated() {},
+	components: {
+		GoBack,
+	},
 };
 </script>
 
 <style scoped>
 .header {
-	background-color: #eec5a4b5;
-	height: 7vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	width: 100vw;
+	background-color: #eec5a4b5;
+	height: 7vh;
+}
+
+.container {
+	width: 85vw;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .animal-contianer {

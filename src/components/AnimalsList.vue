@@ -1,11 +1,14 @@
 <template>
 	<main>
 		<div class="header">
-			<div v-if="currentTab == 1">
-				<h1>Dogs</h1>
-			</div>
-			<div v-else>
-				<h1>Cats</h1>
+			<div class="container">
+				<GoBack />
+				<div v-if="currentTab == 1">
+					<h1>Dogs</h1>
+				</div>
+				<div v-else>
+					<h1>Cats</h1>
+				</div>
 			</div>
 		</div>
 		<div class="animal-contianer">
@@ -42,25 +45,31 @@
 </template>
 
 <script>
+import GoBack from "./GoBack.vue";
 export default {
 	name: "AnimalsList",
 	props: ["animals", "currentTab"],
-	data() {
-		return {};
+	components: {
+		GoBack,
 	},
-	methods: {},
-	created() {},
-	updated() {},
 };
 </script>
 
 <style scoped>
 .header {
-	background-color: #eec5a4b5;
-	height: 7vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	width: 100vw;
+	background-color: #eec5a4b5;
+	height: 7vh;
+}
+
+.container {
+	width: 85vw;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .animal-contianer {

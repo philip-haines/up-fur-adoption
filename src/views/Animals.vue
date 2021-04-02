@@ -1,9 +1,14 @@
 <template>
 	<div>
-		<div v-if="currentTab == 1 || currentTab == 2" class="dogs">
+		<div v-if="currentTab == 1" class="dogs">
+			<LoadingScreen v-if="loading === true" />
 			<AnimalsList :animals="animals" :currentTab="currentTab" />
 		</div>
-		<div v-if="currentTab == 3" class="shelters">
+		<div v-else-if="currentTab == 2">
+			<LoadingScreen v-if="loading === true" />
+			<AnimalsList :animals="animals" :currentTab="currentTab" />
+		</div>
+		<div v-else class="shelters">
 			<Shelters />
 		</div>
 		<div class="button-row">
@@ -25,12 +30,14 @@
 <script>
 import AnimalsList from "@/components/AnimalsList.vue";
 import Shelters from "./Shelters.vue";
+import LoadingScreen from "@/components/LoadingScreen.vue";
 const bearer =
-	"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJLNFVCYmFJYVUzYWV3anJycFRDMHVHTFd0Vm1LWHA5WDF1S1lQTmJVMzU3ZW5iM3ZuQyIsImp0aSI6ImJiMTlhZjFhODI5YzBjM2E4OWJjYWNiZWUzYTcxNzAxZDQwMDkxODZiNjI5MWQ2NWIwNGNiNzYzZTBkZWIxYjI1Y2IyODg4MzA2Mzk1Y2NkIiwiaWF0IjoxNjE3MjI2MDAxLCJuYmYiOjE2MTcyMjYwMDEsImV4cCI6MTYxNzIyOTYwMSwic3ViIjoiIiwic2NvcGVzIjpbXX0.CTrPOFPcddk9k0kUPCdlcRrRwZ2NrzH-FgbpoLK36_qE2gPIeQOhnhAaK7YJ7vtD-KEAPxhfoSH8d5KN9e86detA57KhJh59S2EShElnnrDmPdRrhNYZ_ZJ65pBH0z0SiUOjjMvgVzwAD1qMWq254CdZpBwVOBwatYxky93wnjI0Rp2OMyX5Y53CMGZee7X8w_HN5tQQBkIc_PACftjO6O79uvA85G0lXko2G4RER7z6bVnDIMN8WiQzZc8rBUlN0z6B_F7ul3OYey2-JNihh2EDQWd_IWLiTnRqI3AfCHjaI1T43IlXJj3rN7eyZzjtGsxFOdeoJnK8uWEi5HaVwg";
+	"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJLNFVCYmFJYVUzYWV3anJycFRDMHVHTFd0Vm1LWHA5WDF1S1lQTmJVMzU3ZW5iM3ZuQyIsImp0aSI6IjI5YmUwNzk3MTc3ZDZmOWQwMTZjYzgyYjY3YTgyMGMwNzEzMTBiNGUxZDIzNWE0MzVkZjQ0MWZmNGMyMzdjMzJmM2I4NDQxOTg5MTFhNTljIiwiaWF0IjoxNjE3MzgzMDM2LCJuYmYiOjE2MTczODMwMzYsImV4cCI6MTYxNzM4NjYzNiwic3ViIjoiIiwic2NvcGVzIjpbXX0.PvT1WJqhlxgPvI6hBM6cl1-pc8K1pPOedN413GMNa_uT7j291qsEb4LnluiTNyyUghjRom5657EYvW_JtKzeq4SpLZyEw6tNN_UJEnSJijQIUnPm5sydCb2I1kS4k23VtsFEhRuI_CLvA4Z5dARGr_fFj-Xv9JI578xOLpPjdSJ1ZFUsGaJS5YU3j3gVGSGwBTYlBjY9moPM_zXnY0DC8OkRtJNR5WItxOEIQx1NZkLTWa9uGbo0rLnZX1-hov9XwXItQ3yRs8AA1QJBzkm0ye40pEyjbRoUXfLcosHx-b71h_NqrJOUv7M9tqCNWBOA6Yr3finf8HjvdgpIeNeGug";
 export default {
 	components: {
 		AnimalsList,
 		Shelters,
+		LoadingScreen,
 	},
 	data() {
 		return {
@@ -38,6 +45,7 @@ export default {
 			currentTab: 1,
 			type: "dog",
 			location: localStorage.getItem("location"),
+			loding: false,
 		};
 	},
 	methods: {
@@ -52,30 +60,39 @@ export default {
 		selectTab(selectedTab) {
 			this.currentTab = selectedTab;
 			this.setTypeState();
-			this.fetchAnimals();
+			this.fetchAnimals(3500);
 		},
 
-		fetchAnimals() {
-			console.log(this.type);
-			fetch(
-				`https://api.petfinder.com/v2/animals?type=${this.type}&age=adult,senior&location=${this.location}&distance=50&status=adoptable&limit=10`,
-				{
-					method: "GET",
-					headers: {
-						"Content-Type": "application/json",
-						Authorization: bearer,
-					},
-				}
-			)
-				.then((response) => response.json())
-				.then((data) => {
-					this.animals = data.animals;
-					console.log(this.animals);
-				});
+		fetchAnimals(delay) {
+			this.loading = true;
+			setTimeout(
+				fetch(
+					`https://api.petfinder.com/v2/animals?type=${this.type}&age=adult,senior&location=${this.location}&distance=50&status=adoptable&limit=10`,
+					{
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: bearer,
+						},
+					}
+				)
+					.then((response) => response.json())
+					.then((data) => {
+						this.animals = data.animals;
+						console.log(this.animals);
+						console.log(
+							"loading state before change",
+							this.loading
+						);
+						this.loading = false;
+						console.log("loading state after change", this.loading);
+					}),
+				delay
+			);
 		},
 	},
 	created() {
-		this.animals = this.fetchAnimals();
+		this.fetchAnimals(3500);
 	},
 };
 </script>
@@ -105,5 +122,17 @@ export default {
 
 .btn:focus {
 	border: none;
+	outline: none;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+	transition: opacity 1s, transform 1s;
+}
+
+.slide-enter,
+.slide-leave-to {
+	opacity: 0;
+	transform: translateX(-30%);
 }
 </style>
