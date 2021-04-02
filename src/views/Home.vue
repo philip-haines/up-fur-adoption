@@ -77,6 +77,8 @@ button {
 	border-radius: 0.5rem;
 	background-color: #7b3a43c1;
 	color: #fbfbfc;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+		rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 input {
@@ -85,7 +87,7 @@ input {
 	border: none;
 	box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
 		rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
-	margin: 1.5rem 0;
+	margin: 1rem 0;
 	padding: 0 1rem;
 }
 
