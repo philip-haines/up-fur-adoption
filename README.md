@@ -1,7 +1,7 @@
 # Up-Fur-Adoption
 
 ## Motivation
-The idea for Up-Fur-Adoption came from the large increase in pet ownership since the Covid-19 pandemic. Historiucally older dogs and cats have a harder time being adopted. The app is designed to only display older animals to users in hops to get them adopted into good homes quickly. 
+The idea for Up-Fur-Adoption came from the large increase in pet ownership since the Covid-19 pandemic. Historically older dogs and cats have a harder time being adopted. The app is designed to only display older animals to users in hops to get them adopted into good homes quickly. 
 
 
 ## Tech/framework used
