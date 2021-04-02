@@ -13,6 +13,7 @@
     "@capacitor/core": "^2.4.7",
     "@capacitor/ios": "^2.4.7",
     "core-js": "^3.6.5",
+    "lottie-vuejs": "^0.1.0",
     "register-service-worker": "^1.7.1",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",

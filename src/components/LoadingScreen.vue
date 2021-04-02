@@ -1,6 +1,6 @@
 <template>
 	<div class="loading-area">
-		<h1>Hi From the Loading Screen</h1>
+		<img src="../assets/animation_300_kn0nm312.gif" alt="" />
 	</div>
 </template>
 
@@ -9,6 +9,13 @@
 <style scoped>
 .loading-area {
 	min-height: 100vh;
-	max-width: 100vw;
+	min-width: 100vw;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgba(0, 0, 0, 0.536);
 }
 </style>
