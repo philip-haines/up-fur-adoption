@@ -18,4 +18,10 @@
 	align-items: center;
 	background: rgba(0, 0, 0, 0.536);
 }
+
+img {
+	width: 250px;
+	height: 250px;
+	box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
 </style>

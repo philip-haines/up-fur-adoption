@@ -1,7 +1,7 @@
 <template>
 	<div class="home">
 		<div class="tag">
-			<h1>Up-Fur-Adoption</h1>
+			<h1>BarkWire</h1>
 			<h2>ADOPT, DON'T SHOP!</h2>
 		</div>
 		<div class="form">
@@ -36,6 +36,7 @@ export default {
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap");
 .home {
 	background-color: #eec5a4b5;
 	display: flex;
@@ -43,7 +44,7 @@ export default {
 	height: 100vh;
 	width: 100vw;
 	align-items: center;
-	/* justify-content: center; */
+
 	background-image: url("../assets/up-fur-adoption-home.png");
 	background-size: 125%;
 	background-position: center;
@@ -52,6 +53,8 @@ export default {
 
 .tag {
 	margin-top: 2rem;
+	font-family: "Luckiest Guy", cursive;
+	text-align: center;
 }
 
 .form {

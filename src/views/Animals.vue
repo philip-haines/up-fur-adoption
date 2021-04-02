@@ -9,7 +9,7 @@
 			<AnimalsList :animals="animals" :currentTab="currentTab" />
 		</div>
 		<div v-else class="shelters">
-			<LoadingScreen v-if="loading === true" />
+			<!-- <LoadingScreen v-if="loading === true" /> -->
 			<Shelters />
 		</div>
 		<div class="button-row">
@@ -61,10 +61,10 @@ export default {
 		selectTab(selectedTab) {
 			this.currentTab = selectedTab;
 			this.setTypeState();
-			this.fetchAnimals(3500);
+			this.fetchAnimals();
 		},
 
-		fetchAnimals(delay) {
+		fetchAnimals() {
 			this.loading = true;
 			setTimeout(
 				fetch(
@@ -80,20 +80,14 @@ export default {
 					.then((response) => response.json())
 					.then((data) => {
 						this.animals = data.animals;
-						console.log(this.animals);
-						console.log(
-							"loading state before change",
-							this.loading
-						);
 						this.loading = false;
-						console.log("loading state after change", this.loading);
 					}),
-				delay
+				6000
 			);
 		},
 	},
 	created() {
-		this.fetchAnimals(4000);
+		this.fetchAnimals();
 	},
 };
 </script>

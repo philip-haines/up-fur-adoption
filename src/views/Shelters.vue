@@ -34,7 +34,6 @@ export default {
 				.then((response) => response.json())
 				.then((data) => {
 					this.shelters = data.organizations;
-					console.log(this.shelters);
 				});
 		},
 	},
