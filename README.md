@@ -57,7 +57,11 @@ export default {
 - Use of Props and Componenets in the Script section on the animal index page
 - This child component is reciving two sets of props from the parent component in order to render data from the api that is being called.  
 
-
+ ## Screen Shots
+![Screen Shot 2021-04-02 at 11 01 36 AM](https://user-images.githubusercontent.com/76078305/113437688-4f57b600-93a4-11eb-9539-86f0432733c7.png)
+![Screen Shot 2021-04-02 at 11 05 17 AM](https://user-images.githubusercontent.com/76078305/113437639-3818c880-93a4-11eb-84c3-0fb249a1fd9c.png)
+![Screen Shot 2021-04-02 at 11 05 42 AM](https://user-images.githubusercontent.com/76078305/113437656-40710380-93a4-11eb-885c-df3193ac6080.png)
+![Screen Shot 2021-04-02 at 11 06 04 AM](https://user-images.githubusercontent.com/76078305/113437660-44048a80-93a4-11eb-9e1e-4ae82936ca87.png)
 
 ## Project setup
 ```
@@ -81,11 +85,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
-
- 
-## Screenshots
-Include logo/demo screenshot etc.
-
 
 #API Information
 
